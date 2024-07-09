@@ -53,9 +53,8 @@ To build this project in Python, we propose the following system design:
    - Integrate with Discord API to post updates and share the generated MD file link to the Planet Cassandra Discord server in a dedicated "dev-changes" channel.
    - Use the `discord.py` library to interact with the Discord API.
 
-7. Logging and Monitoring:
-   - Implement logging with Python's built-in `logging` module.
-   - Use `prometheus_client` for monitoring and `grafana` for visualization.
+7. Logging:
+   - Implement comprehensive logging using Python's built-in `logging` module to track system activities, errors, and performance.
 
 9. Configuration:
    - Use `configparser` or `pyyaml` for managing configuration settings.
