@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from src.data_collection import changes_scraper, jira_scraper, cep_scraper, mailing_list_scraper
+from cassandra_dev_news_agent.src.data_collection import changes_scraper, jira_scraper, cep_scraper, mailing_list_scraper
 
 class TestDataCollection(unittest.TestCase):
 
