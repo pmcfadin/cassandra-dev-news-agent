@@ -46,17 +46,14 @@ To build this project in Python, we propose the following system design:
    - Utilize Astra's DataAPI for efficient data access and management.
 
 5. Content Generation:
-   - Use the LLM to generate blog post content based on the processed data.
-   - Implement templates using `jinja2` for consistent formatting.
+   - Use the LLM to generate a weekly summary of changes in Markdown format.
+   - Implement templates using `jinja2` for consistent formatting of the MD file.
 
 6. Notification System:
-   - Integrate with Discord API to post updates to the Planet Cassandra Discord server in a dedicated "dev-changes" channel.
+   - Integrate with Discord API to post updates and share the generated MD file link to the Planet Cassandra Discord server in a dedicated "dev-changes" channel.
    - Use the `discord.py` library to interact with the Discord API.
 
-7. Web Interface:
-   - Develop a simple web interface using `flask` or `fastapi` to display the weekly blog posts.
-
-8. Logging and Monitoring:
+7. Logging and Monitoring:
    - Implement logging with Python's built-in `logging` module.
    - Use `prometheus_client` for monitoring and `grafana` for visualization.
 
