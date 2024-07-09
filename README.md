@@ -41,8 +41,9 @@ To build this project in Python, we propose the following system design:
    - Implement custom logic to determine the relevance and importance of changes.
 
 4. Storage:
-   - Use `sqlite3` for local storage or `sqlalchemy` with a more robust database for larger scale.
-   - Store processed data, decisions, and generated content.
+   - Use DataStax Astra and the DataAPI for cloud-native, scalable storage.
+   - Store processed data, decisions, and generated content in Astra's managed Cassandra database.
+   - Utilize Astra's DataAPI for efficient data access and management.
 
 5. Content Generation:
    - Use the LLM to generate blog post content based on the processed data.
