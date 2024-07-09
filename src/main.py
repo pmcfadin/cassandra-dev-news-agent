@@ -16,24 +16,32 @@ def main():
     changes = changes_scraper.scrape_changes()
     logging.info(f"Collected {len(changes)} changes from CHANGES.txt")
 
-    # TODO: Implement other data collection methods as they are completed
-    
     # Data Processing
-    # TODO: Implement data processing once text_processor is completed
+    logging.info("Processing collected changes...")
+    processed_changes = text_processor.process_text(changes)
+    logging.info(f"Processed {len(processed_changes)} changes")
 
     # Decision Making
-    # TODO: Implement decision making once llm_interface is completed
+    logging.info("Analyzing changes with LLM...")
+    analyzed_changes = llm_interface.analyze_with_llm(processed_changes)
+    logging.info(f"Analyzed {len(analyzed_changes)} changes")
 
     # Storage
-    # TODO: Implement storage once astra_manager is completed
+    logging.info("Storing analyzed changes...")
+    astra_manager.store_data(analyzed_changes)
+    logging.info("Changes stored successfully")
 
     # Content Generation
-    # TODO: Implement content generation once markdown_generator is completed
+    logging.info("Generating markdown content...")
+    markdown_content = markdown_generator.generate_markdown(analyzed_changes)
+    logging.info("Markdown content generated")
 
     # Notification
-    # TODO: Implement notification once discord_notifier is completed
+    logging.info("Sending notification...")
+    discord_notifier.send_notification(markdown_content)
+    logging.info("Notification sent")
 
-    logging.info("Data collection and processing completed.")
+    logging.info("Data collection, processing, and notification completed.")
 
 if __name__ == "__main__":
     main()
