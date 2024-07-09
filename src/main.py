@@ -18,7 +18,7 @@ def main():
 
     # Data Processing
     logging.info("Processing collected changes...")
-    processed_changes = text_processor.process_text(changes)
+    processed_changes = text_processor.process_changes(changes)
     logging.info(f"Processed {len(processed_changes)} changes")
 
     # Decision Making
