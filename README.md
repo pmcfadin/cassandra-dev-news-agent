@@ -24,5 +24,47 @@ Act - Based on the decisions in the agentics step, act on those decisions
 Learn - Update any system that needs to change based on new information
 Notify - Output final result
 
+## System Design
+
+To build this project in Python, we propose the following system design:
+
+1. Data Collection:
+   - Use libraries like `requests` and `beautifulsoup4` to scrape data from the CHANGES.txt file, Jira, CEPs, and mailing lists.
+   - Implement scheduled tasks using `apscheduler` to fetch data regularly.
+
+2. Data Processing:
+   - Use `pandas` for data manipulation and analysis.
+   - Implement natural language processing with `nltk` or `spacy` to extract key information from text.
+
+3. Decision Making:
+   - Integrate with an LLM API (e.g., OpenAI's GPT) using the `openai` library for reasoning and decision-making.
+   - Implement custom logic to determine the relevance and importance of changes.
+
+4. Storage:
+   - Use `sqlite3` for local storage or `sqlalchemy` with a more robust database for larger scale.
+   - Store processed data, decisions, and generated content.
+
+5. Content Generation:
+   - Use the LLM to generate blog post content based on the processed data.
+   - Implement templates using `jinja2` for consistent formatting.
+
+6. Notification System:
+   - Use `smtplib` for email notifications or integrate with services like Slack or Discord for instant messaging.
+
+7. Web Interface:
+   - Develop a simple web interface using `flask` or `fastapi` to display the weekly blog posts.
+
+8. Logging and Monitoring:
+   - Implement logging with Python's built-in `logging` module.
+   - Use `prometheus_client` for monitoring and `grafana` for visualization.
+
+9. Configuration:
+   - Use `configparser` or `pyyaml` for managing configuration settings.
+
+10. Testing:
+    - Implement unit tests with `pytest` and integration tests to ensure system reliability.
+
+This design allows for a modular, scalable system that can be easily extended or modified as the project evolves.
+
 ## Initial goal of the system
-Our first goal is to build a system that will gather development changes in teh Cassandra project and create a blog page once a week. Every Friday, users can see what they missed for the week. How detailed we get is based on how relevent the change is. This will have to be learned over time and the feedback will be on how frequent the changes are. If it's too much info weekly, we'll try daily. Not enough? We'll try every week. 
+Our first goal is to build a system that will gather development changes in the Cassandra project and create a blog page once a week. Every Friday, users can see what they missed for the week. How detailed we get is based on how relevant the change is. This will have to be learned over time and the feedback will be on how frequent the changes are. If it's too much info weekly, we'll try daily. Not enough? We'll try every week. 
