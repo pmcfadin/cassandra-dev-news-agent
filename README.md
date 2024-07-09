@@ -48,6 +48,7 @@ To build this project in Python, we propose the following system design:
 5. Content Generation:
    - Use the LLM to generate a weekly summary of changes in Markdown format.
    - Implement templates using `jinja2` for consistent formatting of the MD file.
+   - Add date stamps to generated files for easy tracking and organization.
 
 6. Notification System:
    - Integrate with Discord API to post updates and share the generated MD file link to the Planet Cassandra Discord server in a dedicated "dev-changes" channel.
