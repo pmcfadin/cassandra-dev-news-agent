@@ -26,20 +26,23 @@ def main():
     analyzed_changes = llm_interface.analyze_with_llm(processed_changes)
     logging.info(f"Analyzed {len(analyzed_changes)} changes")
 
-    # Storage
-    logging.info("Storing analyzed changes...")
-    astra_manager.store_data(analyzed_changes)
-    logging.info("Changes stored successfully")
+    if analyzed_changes:
+        # Storage
+        logging.info("Storing analyzed changes...")
+        astra_manager.store_data(analyzed_changes)
+        logging.info("Changes stored successfully")
 
-    # Content Generation
-    logging.info("Generating markdown content...")
-    markdown_content = markdown_generator.generate_markdown(analyzed_changes)
-    logging.info("Markdown content generated")
+        # Content Generation
+        logging.info("Generating markdown content...")
+        markdown_content = markdown_generator.generate_markdown(analyzed_changes)
+        logging.info("Markdown content generated")
 
-    # Notification
-    logging.info("Sending notification...")
-    discord_notifier.send_notification(markdown_content)
-    logging.info("Notification sent")
+        # Notification
+        logging.info("Sending notification...")
+        discord_notifier.send_notification(markdown_content)
+        logging.info("Notification sent")
+    else:
+        logging.warning("No changes were analyzed. Skipping storage, content generation, and notification steps.")
 
     logging.info("Data collection, processing, and notification completed.")
 
