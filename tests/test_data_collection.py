@@ -8,7 +8,8 @@ class TestDataCollection(unittest.TestCase):
     def test_changes_scraper(self, mock_get):
         # Mock the response
         mock_response = MagicMock()
-        mock_response.text = "4.2:\n* Add new feature (CASSANDRA-1234)\n"
+        mock_response.status_code = 200
+        mock_response.text = "4.2:\n* Add new feature (CASSANDRA-1234)\n4.1:\n* Fix bug (CASSANDRA-5678)\n"
         mock_get.return_value = mock_response
 
         # Call the function
@@ -16,9 +17,23 @@ class TestDataCollection(unittest.TestCase):
 
         # Assert the result
         self.assertIsInstance(result, list)
-        self.assertEqual(len(result), 1)
-        self.assertIn('CASSANDRA-1234', result[0])
-        self.assertIn('Add new feature', result[0])
+        self.assertEqual(len(result), 2)
+        self.assertEqual(result[0], "4.2: Add new feature (CASSANDRA-1234)")
+        self.assertEqual(result[1], "4.1: Fix bug (CASSANDRA-5678)")
+
+    @patch('src.data_collection.changes_scraper.requests.get')
+    def test_changes_scraper_failed_request(self, mock_get):
+        # Mock a failed response
+        mock_response = MagicMock()
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        # Call the function
+        result = changes_scraper.scrape_changes()
+
+        # Assert the result
+        self.assertIsInstance(result, list)
+        self.assertEqual(len(result), 0)
 
     @patch('src.data_collection.jira_scraper.JIRA')
     def test_jira_scraper(self, mock_jira):
