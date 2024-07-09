@@ -13,3 +13,4 @@ python-dotenv>=1.0.0
 aiohttp>=3.9.1
 astrapy>=0.7.4
 jira>=3.5.2
+jira>=3.5.2
