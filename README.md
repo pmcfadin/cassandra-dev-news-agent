@@ -50,7 +50,8 @@ To build this project in Python, we propose the following system design:
    - Implement templates using `jinja2` for consistent formatting.
 
 6. Notification System:
-   - Use `smtplib` for email notifications or integrate with services like Slack or Discord for instant messaging.
+   - Integrate with Discord API to post updates to the Planet Cassandra Discord server in a dedicated "dev-changes" channel.
+   - Use the `discord.py` library to interact with the Discord API.
 
 7. Web Interface:
    - Develop a simple web interface using `flask` or `fastapi` to display the weekly blog posts.
