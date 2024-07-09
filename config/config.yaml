@@ -1,0 +1,26 @@
+# DataStax Astra Configuration
+astra:
+  database_id: your_database_id
+  region: your_region
+  keyspace: your_keyspace
+  application_token: your_application_token
+
+# Discord Configuration
+discord:
+  bot_token: your_bot_token
+  channel_id: your_channel_id
+
+# Scheduling Configuration
+schedule:
+  weekly_update_day: Friday
+  weekly_update_time: "18:00"
+
+# Logging Configuration
+logging:
+  level: INFO
+  file: logs/app.log
+
+# LLM Configuration
+llm:
+  model: claude-3-sonnet-20240229
+  api_key: your_anthropic_api_key
