@@ -37,7 +37,7 @@ To build this project in Python, we propose the following system design:
    - Implement natural language processing with `nltk` or `spacy` to extract key information from text.
 
 3. Decision Making:
-   - Integrate with an LLM API (e.g., OpenAI's GPT) using the `openai` library for reasoning and decision-making.
+   - Integrate with Claude 3.5 Sonnet API using the appropriate library for reasoning and decision-making.
    - Implement custom logic to determine the relevance and importance of changes.
 
 4. Storage:
