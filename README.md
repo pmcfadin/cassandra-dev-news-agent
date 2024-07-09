@@ -64,5 +64,63 @@ To build this project in Python, we propose the following system design:
 
 This design allows for a modular, scalable system that can be easily extended or modified as the project evolves.
 
+## Project Layout
+
+The project will be organized with the following directory structure and key files:
+
+```
+cassandra-dev-news-agent/
+│
+├── src/
+│   ├── data_collection/
+│   │   ├── __init__.py
+│   │   ├── changes_scraper.py
+│   │   ├── jira_scraper.py
+│   │   ├── cep_scraper.py
+│   │   └── mailing_list_scraper.py
+│   │
+│   ├── data_processing/
+│   │   ├── __init__.py
+│   │   └── text_processor.py
+│   │
+│   ├── decision_making/
+│   │   ├── __init__.py
+│   │   └── llm_interface.py
+│   │
+│   ├── storage/
+│   │   ├── __init__.py
+│   │   └── astra_manager.py
+│   │
+│   ├── content_generation/
+│   │   ├── __init__.py
+│   │   └── markdown_generator.py
+│   │
+│   ├── notification/
+│   │   ├── __init__.py
+│   │   └── discord_notifier.py
+│   │
+│   └── main.py
+│
+├── tests/
+│   ├── test_data_collection.py
+│   ├── test_data_processing.py
+│   ├── test_decision_making.py
+│   ├── test_storage.py
+│   ├── test_content_generation.py
+│   └── test_notification.py
+│
+├── config/
+│   └── config.yaml
+│
+├── logs/
+│   └── app.log
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+This layout organizes the project into logical modules, separates the source code from tests and configuration, and provides a clear structure for adding new components as the project evolves.
+
 ## Initial goal of the system
 Our first goal is to build a system that will gather development changes in the Cassandra project and create a blog page once a week. Every Friday, users can see what they missed for the week. How detailed we get is based on how relevant the change is. This will have to be learned over time and the feedback will be on how frequent the changes are. If it's too much info weekly, we'll try daily. Not enough? We'll try every week. 
